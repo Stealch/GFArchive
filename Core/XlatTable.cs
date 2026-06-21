@@ -22,13 +22,10 @@ namespace VitalEngine.Archive.Core
 
         public void Add(uint refId, T item)
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-
             if (_items.ContainsKey(refId))
                 throw new ArchiveException($"Элемент с REFID {refId} уже существует");
 
-            _items[refId] = item;
+            _items[refId] = item ?? throw new ArgumentNullException(nameof(item));
         }
 
         public bool TryGet(uint refId, out T item)
