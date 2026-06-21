@@ -75,7 +75,7 @@ public async Task ExtractGameArchiveAsync()
 
     Console.WriteLine("✅ Распаковка завершена!");
 }
-Получение информации об архиве
+## Получение информации об архиве
 csharp
 var info = await unpacker.GetArchiveInfoAsync(@"D:\Games\Game\main.fat");
 
@@ -95,12 +95,12 @@ await unpacker.ExtractSelectedAsync(
     outputDirectory,
     entries
 );
-🔧 Требования
+## 🔧 Требования
 .NET Framework 4.8 или выше
 
 C# 8.0 (или выше для nullable-аннотаций, если включены)
 
-🧪 Тестирование
+## 🧪 Тестирование
 Проект покрыт модульными тестами (NUnit):
 
 bash
@@ -126,7 +126,7 @@ archiveId: byte         # ID .grp контейнера
 offset: uint            # Смещение внутри .grp
 size: uint              # Размер файла
 unknown: long           # Хеш/timestamp (сохраняется как есть)
-🔬 Восстановленные алгоритмы
+## 🔬 Восстановленные алгоритмы
 Хеш-функции
 Функция	Использование	Алгоритм
 boost::hash_range	Строковые пути	hash ^= hash * 0x40 + (hash >> 2) + 0x9E3779B9 + char
@@ -137,7 +137,7 @@ CombineHash	Комбинированный хеш	(h1>>3) + 0x9E3779B9 + h1 ... 
 FileId	random_access	Числовой ID
 FilePath	hashed_non_unique	Хеш полного пути
 (FolderName, FileName)	hashed	Составной хеш
-🤝 Contributing
+## 🤝 Contributing
 Fork проекта
 
 Создай ветку (git checkout -b feature/AmazingFeature)
@@ -148,28 +148,20 @@ Fork проекта
 
 Открой Pull Request
 
-📄 Лицензия
+## 📄 Лицензия
 MIT © 2024
 
-🙏 Благодарности
+## 🙏 Благодарности
 Boost — за MultiIndex и Serialization
 
 QuickBMS — за оригинальный скрипт-образец
 
 Сообщество — за поддержку и интерес к наследию студии
 
-📬 Контакты
+## 📬 Контакты
 Issues: GitHub Issues
 
 Discord: [Ссылка на сервер]
 
-⚠️ Предупреждение
+## ⚠️ Предупреждение
 Данная библиотека создана исключительно в образовательных и исследовательских целях. Не используйте её для нарушения авторских прав или распространения контента, защищённого законом.
-
-text
-
----
-
-**Файл готов!** 🚀
-
-Жду твой `.csproj` для GUI-оболочки.
