@@ -107,14 +107,6 @@ await unpacker.ExtractSelectedAsync(
 
 ---
 
-## 🧪 Тестирование
-
-```bash
-dotnet test
-```
-
----
-
 ## 📁 Структура файла архива
 
 ### main.fat
