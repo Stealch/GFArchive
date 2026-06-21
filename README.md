@@ -1,20 +1,40 @@
 # GFArchive
 
-Библиотека для распаковки архивов игры на движке VitalEngine (.fat / .grp).
-# Использование
-using VitalEngine.Archive;
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.8-blueviolet)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-8.0-green)](https://docs.microsoft.com/en-us/dotnet/csharp/)
 
-var unpacker = new ArchiveUnpacker();
+Библиотека для распаковки, просмотра и модификации игровых архивов формата **.fat / .grp** (движок **VitalEngine**).
 
-// Получить информацию об архиве
-var info = await unpacker.GetArchiveInfoAsync("main.fat");
+---
 
-Console.WriteLine($"Файлов: {info.TotalFiles}");
-Console.WriteLine($"Папок: {info.TotalFolders}");
+## 📦 Возможности
 
-// Распаковать всё
-await unpacker.ExtractArchiveAsync("main.fat", "output");
+- ✅ Чтение и парсинг **main.fat** — полностью воссозданная структура через реверс-инжиниринг
+- ✅ Извлечение всех файлов или выбранных элементов
+- ✅ Поддержка **Boost.MultiIndex** (хеш-индексы по ID, пути и составному ключу)
+- ✅ Точное восстановление хеш-функций (`boost::hash_range`, FNV-1a)
+- ✅ Работа с **UTF-16** строками (как в оригинальной игре)
+- ✅ Обработка **XlatTable** (трансляция REFID → данные)
+- ✅ Асинхронный API (`async`/`await`)
+- ✅ Отчёт о прогрессе через `IProgressReporter`
+- ✅ Поддержка отмены через `CancellationToken`
+- ✅ Готов к интеграции в GUI, CLI или SDK
 
-// Распаковать выбранные файлы
-var entries = info.Entries.Take(10);
-await unpacker.ExtractSelectedAsync("main.fat", "output", entries);
+---
+
+## 🧱 Архитектура
+
+Библиотека построена на основе данных, полученных в ходе **реверс-инжиниринга** отладочной версии игры с PDB-символами:
+
+```text
+VitalEngine.Archive
+├── Models             # Data-модели (ArchiveInfo, ArchiveEntry...)
+├── Core               # Хеш-функции, XlatTable, HashedIndex
+├── Readers            # Чтение main.fat (FatArchiveReader)
+├── Extractors         # Извлечение файлов из .grp
+├── Services           # Валидация, прогресс
+├── Interfaces         # Контракты (IProgressReporter, ...)
+├── Exceptions         # Специфичные исключения
+├── Extensions         # BinaryReaderExtensions
+└── Public             # ArchiveUnpacker — единый входной API
