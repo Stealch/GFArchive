@@ -90,7 +90,7 @@ namespace VitalEngine.Archive.Readers
             var info = Encoding.UTF8.GetString(reader.ReadBytes(infoSize));
 
             // 2. Смещение к таблице архивов
-            reader.Skip(HeaderOffset);
+            reader.BaseStream.Seek(HeaderOffset, SeekOrigin.Begin);
 
             // 3. Чтение архивных файлов (.grp)
             var containers = new List<ArchiveContainer>();

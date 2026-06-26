@@ -3,12 +3,12 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("VitalEngine.Archive")]
-[assembly: AssemblyDescription("Библиотека для распаковки архивов игры VitalEngine")]
+[assembly: AssemblyTitle("GFArchive")]
+[assembly: AssemblyDescription("Библиотека для работы с игровыми архивами VitalEngine")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VitalEngine.Archive")]
-[assembly: AssemblyCopyright("Copyright © 2024")]
+[assembly: AssemblyProduct("GFArchive")]
+[assembly: AssemblyCopyright("Copyright © 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -17,7 +17,3 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-// Для доступа к внутренним членам из тестов
-[assembly: InternalsVisibleTo("VitalEngine.Archive.Tests")]
-[assembly: InternalsVisibleTo("VitalEngine.Archive.Benchmarks")]

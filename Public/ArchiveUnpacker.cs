@@ -56,8 +56,7 @@ namespace VitalEngine.Archive
                 throw new ArgumentException("Путь к .fat файлу не указан", nameof(fatPath));
 
             // Используем синхронный метод
-            var reader = _reader as FatArchiveReader;
-            if (reader != null)
+            if (_reader is FatArchiveReader reader)
             {
                 return reader.ReadArchive(fatPath);
             }
